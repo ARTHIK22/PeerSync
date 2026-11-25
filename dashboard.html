@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8f9fc"><meta name="description" content="Your personalized PeerSync student dashboard.">
+  <title>Dashboard — PeerSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css"><link rel="stylesheet" href="css/global-search.css"><link rel="stylesheet" href="css/dashboard.css">
+  <script src="js/storage.js" defer></script><script defer src="js/analytics.js"></script><script src="js/notifications.js" defer></script><script src="js/auth.js" defer></script><script src="js/matching.js" defer></script><script src="js/collaboration.js" defer></script><script src="js/intelligence.js" defer></script><script src="js/dashboard.js" defer></script><script src="js/community-data.js" defer></script><script src="js/search-engine.js" defer></script><script src="js/global-search.js" defer></script><script defer src="js/platform-config.js"></script></head>
+<body class="app-dashboard">
+  <div class="dashboard-frame">
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <a class="brand dashboard-brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 10.5a5.5 5.5 0 0 1 9.4-3.9l2.3 2.3M24 21.5a5.5 5.5 0 0 1-9.4 3.9l-2.3-2.3M10.1 21.9l11.8-11.8"/><circle cx="8" cy="10.5" r="2.4"/><circle cx="24" cy="21.5" r="2.4"/></svg></span><span>peer<span class="brand-accent">sync</span></span></a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="sidebar-nav" aria-label="Workspace navigation">
+        <a class="side-link selected" href="dashboard.html"><span class="side-icon">▦</span><span>Dashboard</span></a>
+        <a class="side-link" href="discover.html"><span class="side-icon">⌕</span><span>Discover students</span><span class="side-arrow">↗</span></a>
+        <a class="side-link" href="projects.html"><span class="side-icon">◈</span><span>Projects</span><span class="side-arrow">↗</span></a>
+        <a class="side-link" href="requests.html?tab=received"><span class="side-icon">↗</span><span>My requests</span><span class="side-arrow">↗</span></a>
+        <a class="side-link" href="network.html"><span class="side-icon">◎</span><span>My network</span><span class="side-arrow">↗</span></a><a class="side-link" href="messages.html"><span class="side-icon">✉</span><span>Messages</span><span class="side-arrow">↗</span></a>
+        <a class="side-link" href="community.html"><span class="side-icon">☷</span><span>Community</span><span class="side-arrow">↗</span></a><a class="side-link" href="notifications.html"><span class="side-icon">♧</span><span>Notifications</span><span class="side-count" id="sidebar-notification-count" hidden>0</span></a>
+      </nav>
+      <div class="sidebar-label sidebar-label-second">YOUR SPACE</div>
+      <nav class="sidebar-nav" aria-label="Your profile and settings">
+        <a class="side-link" href="profile.html"><span class="side-icon">◉</span><span>My profile</span></a><a class="side-link" href="skill-insights.html"><span class="side-icon">✦</span><span>Skill insights</span><span class="side-arrow">↗</span></a><a class="side-link" href="my-insights.html"><span class="side-icon">◷</span><span>My insights</span><span class="side-arrow">↗</span></a>
+        <a class="side-link" href="coming-soon.html?feature=settings"><span class="side-icon">⚙</span><span>Settings</span><span class="side-arrow">↗</span></a>
+      </nav>
+      <div class="sidebar-bottom"><div class="sidebar-tip"><span>✦</span><div><b>Good work is shared work.</b><small>Your next teammate could be anywhere.</small></div></div>
+        <div class="sidebar-user"><button class="sidebar-user-button" id="sidebar-user-button" type="button" aria-expanded="false" aria-controls="sidebar-user-menu"><span class="user-avatar" id="sidebar-avatar">P</span><span class="sidebar-user-copy"><b id="sidebar-student-name">Student</b><small id="sidebar-student-college">University</small></span><span class="sidebar-user-more">···</span></button><div class="sidebar-user-menu" id="sidebar-user-menu" hidden><a href="profile.html">View profile</a><button id="sidebar-logout" type="button">Log out</button></div></div>
+      </div>
+    </aside>
+    <div class="sidebar-scrim" id="sidebar-scrim"></div>
+    <div class="dashboard-main">
+      <header class="dashboard-topbar"><div class="topbar-left"><button class="mobile-menu-button" id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="dashboard-sidebar" aria-label="Open navigation">☰</button><div><span class="topbar-kicker">PEERSYNC WORKSPACE</span><h1>Dashboard</h1></div></div>
+        <div class="topbar-tools"><div class="dashboard-search-wrap"><label class="dashboard-search"><span>⌕</span><input id="dashboard-search" type="search" autocomplete="off" placeholder="Search people, skills, projects…" aria-label="Search students and projects"><kbd>Ctrl K</kbd></label><div class="search-results" id="search-results" role="listbox" hidden></div></div>
+          <div class="notification-wrap"><button class="notification-button" id="notification-button" type="button" aria-expanded="false" aria-controls="notification-popover" aria-label="Notifications"><span>♧</span><i id="top-notification-dot" hidden></i><b class="notification-bell-count" id="notification-bell-count" hidden>0</b></button><div class="notification-popover" id="notification-popover" hidden><div class="popover-heading"><b>Notifications</b><a href="notifications.html">View all</a></div><div id="notification-items"></div><div class="popover-actions"><button id="popover-mark-all" type="button">Mark all as read</button><a href="notifications.html">View all notifications →</a></div></div></div>
+          <button class="topbar-avatar-button" id="topbar-profile-button" type="button" aria-label="Open my profile"><span class="user-avatar" id="topbar-avatar">P</span><span class="topbar-student-name" id="topbar-name">Student</span><span class="chevron">⌄</span></button>
+        </div>
+      </header>
+      <main class="dashboard-content">
+        <section class="welcome-banner"><div class="welcome-copy"><div class="welcome-date"><span class="welcome-spark">✦</span><span id="current-date">YOUR PEERSYNC SPACE</span></div><h2><span id="greeting">Good day</span>, <span id="welcome-name">student</span>.</h2><p>Ready to find your next great collaborator?</p><div class="welcome-details"><span>⌂ <b id="welcome-college">Your university</b></span><i></i><span id="welcome-year">Add your academic year</span></div><a href="edit-profile.html" class="button button-primary welcome-cta">Complete your profile <span>↗</span></a></div><div class="welcome-art" aria-hidden="true"><div class="welcome-art-orbit orbit-a"></div><div class="welcome-art-orbit orbit-b"></div><div class="welcome-art-core"><span>✳</span><b>Good ideas<br>find their people.</b></div><div class="welcome-art-node node-one">⌘</div><div class="welcome-art-node node-two">✦</div><div class="welcome-art-node node-three">◎</div><span class="welcome-art-dot dot-one"></span><span class="welcome-art-dot dot-two"></span></div></section>
+        <section class="stats-grid" aria-label="Your PeerSync statistics">
+          <article class="stat-card stat-indigo"><div class="stat-card-top"><span>My connections</span><i>◎</i></div><strong id="stat-connections">0</strong><small id="stat-connections-note">Your network starts here</small></article>
+          <article class="stat-card stat-blue"><div class="stat-card-top"><span>Active projects</span><i>◈</i></div><strong id="stat-projects">0</strong><small id="stat-projects-note">Projects with open roles</small></article>
+          <article class="stat-card stat-peach"><div class="stat-card-top"><span>Pending requests</span><i>↗</i></div><strong id="stat-requests">0</strong><small id="stat-requests-note">Waiting for your response</small></article>
+          <a class="stat-card stat-lavender stat-profile-card" href="edit-profile.html"><div class="stat-card-top"><span>Profile completion</span><i>✦</i></div><strong id="stat-completion">0%</strong><small id="stat-completion-note">Your story is taking shape</small><span class="stat-mini-progress"><i id="stat-mini-progress"></i></span></a>
+        </section>
+        <div class="dashboard-columns dashboard-columns-primary">
+          <section class="dash-panel completion-panel" id="profile-progress-panel"><div class="panel-heading"><div><span class="panel-eyebrow">A PROFILE THAT FEELS LIKE YOU</span><h2>Your profile progress</h2></div><a class="panel-link" href="edit-profile.html">Edit profile <span>→</span></a></div>
+            <div class="progress-content"><div class="progress-ring-wrap"><svg viewBox="0 0 120 120" aria-label="Profile completion progress"><circle class="progress-ring-track" cx="60" cy="60" r="49"></circle><circle class="progress-ring-value" id="profile-progress-ring" cx="60" cy="60" r="49"></circle></svg><div class="progress-ring-label"><b id="profile-progress-number">0%</b><small>complete</small></div></div><div class="progress-message"><h3 id="progress-title">Your profile is a work in progress.</h3><p id="progress-copy">Add a few details so future teammates know what you bring to the table.</p><div class="progress-section-grid" id="progress-sections"></div><a href="edit-profile.html" class="progress-next" id="progress-next">Add your skills <span>→</span></a></div></div>
+          </section>
+          <section class="dash-panel activity-panel"><div class="panel-heading"><div><span class="panel-eyebrow">LITTLE STEPS ADD UP</span><h2>Recent activity</h2></div><span class="panel-muted">Your latest updates</span></div><div class="activity-list" id="activity-list"></div><div class="panel-empty" id="activity-empty" hidden><span class="empty-icon">◷</span><b>Nothing new just yet</b><p>Your profile and collaboration activity will show up here.</p></div></section>
+        </div>
+        <section class="dash-panel recommendations-panel"><div class="panel-heading"><div><span class="panel-eyebrow">MORE MINDS, MORE POSSIBILITIES</span><h2>People you may want to collaborate with</h2><p class="panel-subtitle">A few students whose skills or interests overlap with yours.</p></div><a class="panel-link" href="discover.html">View all students <span>→</span></a></div><div class="people-grid" id="recommended-students"></div><div class="panel-empty compact-empty" id="students-empty" hidden><span class="empty-icon">◎</span><b>No recommendations yet</b><p>Add skills and interests to your profile to find promising overlaps.</p><a href="edit-profile.html#skills" class="button button-outline">Share your skills <span>→</span></a></div></section>
+        <div class="dashboard-columns dashboard-columns-secondary">
+          <section class="dash-panel projects-panel"><div class="panel-heading"><div><span class="panel-eyebrow">IDEAS IN MOTION</span><h2>Projects worth exploring</h2></div><a class="panel-link" href="projects.html">All projects <span>→</span></a></div><div class="dashboard-project-list" id="recommended-projects"></div><div class="panel-empty compact-empty" id="projects-empty" hidden><span class="empty-icon">◈</span><b>No open projects yet</b><p>Start a new idea or come back soon for student-led projects.</p><a href="create-project.html" class="button button-outline">Start a project <span>→</span></a></div></section>
+          <section class="dash-panel requests-panel"><div class="panel-heading"><div><span class="panel-eyebrow">YOUR NEXT TEAMMATE?</span><h2>Incoming requests</h2></div><a class="panel-link" href="requests.html?tab=received">View requests <span>→</span></a></div><div class="request-list" id="request-preview"></div><div class="panel-empty compact-empty" id="requests-empty" hidden><span class="empty-icon">↗</span><b>You're all caught up</b><p>New collaboration requests will appear here.</p></div></section>
+        </div>
+        <section class="quick-actions"><div><span class="panel-eyebrow">A FEW SHORTCUTS</span><h2>Keep the momentum going.</h2></div><div class="quick-action-grid"><a href="edit-profile.html"><span>✎</span><b>Edit my profile</b><small>Make your skills easier to find</small><i>↗</i></a><a href="discover.html"><span>⌕</span><b>Discover students</b><small>Meet people beyond your campus</small><i>↗</i></a><a href="projects.html"><span>◈</span><b>Explore projects</b><small>Find an idea that inspires you</small><i>↗</i></a><a href="edit-profile.html#skills"><span>⌘</span><b>Share my skills</b><small>Show what you bring to a team</small><i>↗</i></a><a href="coming-soon.html?feature=invite"><span>＋</span><b>Invite collaborators</b><small>Bring a teammate into the mix</small><i>↗</i></a></div></section>
+        <footer class="dashboard-footer"><a href="index.html">← PeerSync home</a><span>Student collaboration prototype · Browser data stays on this device.</span></footer>
+      </main>
+    </div>
+  </div>
+  <dialog class="dashboard-dialog" id="detail-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close details">×</button></form><div id="detail-dialog-content"></div></dialog>
+</body>
+</html>
+
+
