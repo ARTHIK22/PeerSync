@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PeerSync
 
 PeerSync is a static student collaboration prototype built with HTML, CSS, and vanilla JavaScript. Open `index.html` with VS Code Live Server to explore the landing page and account flow.
@@ -124,3 +125,6 @@ This is a college frontend prototype, not production authentication. The browser
 ## Run locally
 
 Open the project folder in VS Code, install or enable Live Server, then right-click `index.html` and choose **Open with Live Server**. No build step or package installation is required.
+=======
+# PeerSync
+>>>>>>> 10ed5f5e4ffd201d3e3ce83f40eef948d60aaeb5
